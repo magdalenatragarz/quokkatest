@@ -1,0 +1,80 @@
+@startuml
+
+interface ITest {
+    + Test(std::string, std::function<void()>)
+    + run() : TestResult
+}
+
+class Test {
+   
+}
+
+interface ITestResult {
+    + TestResult(bool, std::string)
+    + hasFailed() : bool
+    + getDescription() : std::string
+}
+
+class TestResult {
+
+}
+
+interface ITestingPrinter {
+    + printTestSetHeader(TestSet);
+    + printTestResult(ITestResult);
+    + printSummary(ITestsSummary);
+    
+}
+
+class TestingPrinter {
+
+}
+
+class TestRunner {
+    + runTests()
+    + registerTestSet(TestSet)
+}
+
+
+interface ITestsSummary {
+
+}
+
+class TestsSummary {
+
+}
+
+abstract class TestSet {
+    + virtual beforeEach()
+    + virtual init()
+    + virtual afterEach()
+    + virtual getName() : std::string
+
+    + getTests() : std::vector<Test>
+    - addTest(std::string, std::function<void()>)
+    - debugTest(std::string, std::function<void()>)  
+}
+
+class Assertions {
+    ...
+}
+
+ITest <|-- Test
+ITestResult <|-- TestResult
+ITestingPrinter <|-- TestingPrinter
+ITestsSummary <|-- TestsSummary
+Assertions <|-- TestSet
+
+ITestResult <.. ITestingPrinter
+ITestsSummary <.. ITestingPrinter
+TestSet <.. ITestingPrinter
+
+TestSet <.. TestRunner
+ITestsSummary <.. TestRunner
+ITestingPrinter <.. TestRunner
+
+ITestResult <.. ITest
+
+ITest <.. TestSet
+
+@enduml

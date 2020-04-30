@@ -1,0 +1,117 @@
+@startuml
+
+class Assertions {
+    - static assert(float) : FloatAssertion 
+    - static assert(int) : IntAssertion
+    - static assert(double) : DoubleAssertion
+    - static assert(std::string) : StringAssertion
+    - static assert(std::function<void()>) : FunctionAssertion
+    - static assert(bool) : BoolAssertion
+}
+
+interface IFloatAssertion {
+    + toBeAlmostEqual(float)
+    + toBeLessThan(float)
+    + toBeGreaterThan(float)
+    + isNan(float)
+    + isInfinity(float)
+}
+
+class FloatAssertion {
+    + not() : NotFloatAssertion
+}
+
+class NotFloatAssertion {
+}
+
+interface IIntAssertion {
+    + toBeEqual(int)
+    + toBeLessThan(int)
+    + toBeGreaterThan(int)
+    + toBeLessOrEqualThan(int)
+    + toBeGreaterOrEqualThan(int)
+}
+
+class IntAssertion {
+    + not() : NotIntAssertion
+}
+
+class NotIntAssertion {
+}
+
+interface IDoubleAssertion {
+    + toBeAlmostEqual(double)
+    + toBeLessThan(double)
+    + toBeGreaterThan(double)
+    + isNan(double)
+    + isInfinity(double)
+}
+
+class DoubleAssertion {
+    + not() : NotDoubleAssertion
+}
+
+class NotDoubleAssertion {
+}
+
+interface IStringAssertion {
+    + toBeEqual(std::string)
+    + toContain(std::string)
+    + toBeginWith(std::string)
+    + toEndWith(std::string)
+    + toMatch(std::regex)
+}
+
+class StringAssertion {
+    + not() : NotStringAssertion
+}
+
+class NotStringAssertion {
+}
+
+interface IFunctionAssertion {
+    + not() : FunctionAssertion
+    + toThrow(std::exception)
+    + toFinishIn(std::chrono::duration)
+}
+
+class FunctionAssertion {
+    + not() : NotStringAssertion
+}
+
+class NotFunctionAssertion {
+}
+
+class BoolAssertion {
+    + toBeTrue()
+    + toBeFalse()
+}
+
+FloatAssertion <.. Assertions
+IntAssertion <.. Assertions
+DoubleAssertion <.. Assertions
+StringAssertion <.. Assertions
+FunctionAssertion <.. Assertions
+BoolAssertion <.. Assertions
+
+IFloatAssertion <|-- FloatAssertion
+IFloatAssertion <|-- NotFloatAssertion
+NotFloatAssertion <.. FloatAssertion
+
+IIntAssertion <|-- IntAssertion
+IIntAssertion <|-- NotIntAssertion
+NotIntAssertion <.. IntAssertion
+
+IStringAssertion <|-- StringAssertion
+IStringAssertion <|-- NotStringAssertion
+NotStringAssertion <.. StringAssertion
+
+IDoubleAssertion <|-- DoubleAssertion
+IDoubleAssertion <|-- NotDoubleAssertion
+NotDoubleAssertion <.. DoubleAssertion
+
+IFunctionAssertion <|-- FunctionAssertion
+IFunctionAssertion <|-- NotFunctionAssertion
+NotFunctionAssertion <.. FunctionAssertion
+
+@enduml
