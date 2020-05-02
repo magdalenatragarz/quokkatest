@@ -1,6 +1,9 @@
-#include <iostream>
+#include <testing/TestResult.hpp>
+#include <testing/Test.hpp>
+#include <testing/TestSet.hpp>
+#include <testing/TestsSummary.hpp>
+#include <testing/TestingPrinter.hpp>
 
 int main() {
-    std::cout << "Hello World!" << std::endl;
     return 0;
 }
