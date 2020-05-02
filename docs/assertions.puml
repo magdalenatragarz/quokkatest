@@ -70,13 +70,13 @@ class NotStringAssertion {
 }
 
 interface IFunctionAssertion {
-    + not() : FunctionAssertion
-    + toThrow(std::exception)
+    + toThrow()
+    + toThrowWithMessage(std::string)
     + toFinishIn(std::chrono::duration)
 }
 
 class FunctionAssertion {
-    + not() : NotStringAssertion
+    + not() : NotFunctionAssertion
 }
 
 class NotFunctionAssertion {
