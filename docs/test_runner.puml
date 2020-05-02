@@ -1,22 +1,18 @@
 @startuml
 
-interface ITest {
+
+class Test {
     + Test(std::string, std::function<void()>)
     + run() : TestResult
 }
 
-class Test {
-   
-}
-
 interface ITestResult {
-    + TestResult(bool, std::string)
     + hasFailed() : bool
     + getDescription() : std::string
 }
 
 class TestResult {
-
+    + TestResult(bool, std::string)
 }
 
 interface ITestingPrinter {
@@ -59,7 +55,6 @@ class Assertions {
     ...
 }
 
-ITest <|-- Test
 ITestResult <|-- TestResult
 ITestingPrinter <|-- TestingPrinter
 ITestsSummary <|-- TestsSummary
@@ -70,11 +65,11 @@ ITestsSummary <.. ITestingPrinter
 TestSet <.. ITestingPrinter
 
 TestSet <.. TestRunner
-ITestsSummary <.. TestRunner
+TestsSummary <.. TestRunner
 ITestingPrinter <.. TestRunner
 
-ITestResult <.. ITest
+TestResult <.. Test
 
-ITest <.. TestSet
+Test <.. TestSet
 
 @enduml
