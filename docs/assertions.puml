@@ -10,7 +10,7 @@ class Assertions {
 }
 
 interface IFloatAssertion {
-    + toBeAlmostEqual(float)
+    + toBeAlmostEqualTo(float)
     + toBeLessThan(float)
     + toBeGreaterThan(float)
     + isNan(float)
@@ -25,11 +25,11 @@ class NotFloatAssertion {
 }
 
 interface IIntAssertion {
-    + toBeEqual(int)
+    + toBeEqualTo(int)
     + toBeLessThan(int)
     + toBeGreaterThan(int)
-    + toBeLessOrEqualThan(int)
-    + toBeGreaterOrEqualThan(int)
+    + toBeLessOrEqualTo(int)
+    + toBeGreaterOrEqualTo(int)
 }
 
 class IntAssertion {
@@ -40,7 +40,7 @@ class NotIntAssertion {
 }
 
 interface IDoubleAssertion {
-    + toBeAlmostEqual(double)
+    + toBeAlmostEqualTo(double)
     + toBeLessThan(double)
     + toBeGreaterThan(double)
     + isNan(double)
@@ -55,7 +55,7 @@ class NotDoubleAssertion {
 }
 
 interface IStringAssertion {
-    + toBeEqual(std::string)
+    + toBeEqualTo(std::string)
     + toContain(std::string)
     + toBeginWith(std::string)
     + toEndWith(std::string)

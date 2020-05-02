@@ -32,10 +32,6 @@ class TestRunner {
 }
 
 
-interface ITestsSummary {
-
-}
-
 class TestsSummary {
 
 }
@@ -57,11 +53,10 @@ class Assertions {
 
 ITestResult <|-- TestResult
 ITestingPrinter <|-- TestingPrinter
-ITestsSummary <|-- TestsSummary
 Assertions <|-- TestSet
 
 ITestResult <.. ITestingPrinter
-ITestsSummary <.. ITestingPrinter
+TestsSummary <.. ITestingPrinter
 TestSet <.. ITestingPrinter
 
 TestSet <.. TestRunner
