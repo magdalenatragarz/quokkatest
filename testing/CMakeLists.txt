@@ -8,6 +8,8 @@ file(GLOB include "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 
 add_library(testing STATIC ${src} ${include})
 
+set_target_properties(testing PROPERTIES LINKER_LANGUAGE CXX)
+
 target_include_directories(testing
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 

@@ -1,4 +1,5 @@
-#include <testing/TestSet.hpp>
+#include <quokka/testing/TestSet.hpp>
+#include <quokka/assertions/Assertions.hpp>
 
 namespace qu {
 

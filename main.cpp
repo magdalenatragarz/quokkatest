@@ -1,8 +1,8 @@
-#include <testing/TestResult.hpp>
-#include <testing/Test.hpp>
-#include <testing/TestSet.hpp>
-#include <testing/TestsSummary.hpp>
-#include <testing/TestingPrinter.hpp>
+#include <quokka/testing/TestResult.hpp>
+#include <quokka/testing/Test.hpp>
+#include <quokka/testing/TestSet.hpp>
+#include <quokka/testing/TestsSummary.hpp>
+#include <quokka/testing/TestingPrinter.hpp>
 
 int main() {
     return 0;

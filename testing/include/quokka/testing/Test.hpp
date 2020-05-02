@@ -1,6 +1,6 @@
 #pragma once
 
-#include <interface/ITest.hpp>
+#include <quokka/interface/ITest.hpp>
 
 #include <string>
 #include <functional>

@@ -1,5 +1,5 @@
-#include <testing/Test.hpp>
-#include <testing/TestResult.hpp>
+#include <quokka/testing/Test.hpp>
+#include <quokka/testing/TestResult.hpp>
 
 namespace qu {
 

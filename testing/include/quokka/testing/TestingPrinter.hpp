@@ -1,6 +1,6 @@
 #pragma once
 
-#include <interface/ITestingPrinter.hpp>
+#include <quokka/interface/ITestingPrinter.hpp>
 
 namespace qu {
 

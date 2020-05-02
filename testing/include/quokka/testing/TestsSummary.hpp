@@ -1,6 +1,6 @@
 #pragma once
 
-#include <interface/ITestsSummary.hpp>
+#include <quokka/interface/ITestsSummary.hpp>
 
 namespace qu {
 

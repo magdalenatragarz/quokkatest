@@ -1,9 +1,9 @@
 #pragma once
 
-#include <testing/TestSet.hpp>
+#include <quokka/testing/TestSet.hpp>
 
-#include <interface/ITestResult.hpp>
-#include <interface/ITestsSummary.hpp>
+#include <quokka/interface/ITestResult.hpp>
+#include <quokka/interface/ITestsSummary.hpp>
 
 namespace qu {
 
