@@ -1,14 +1,25 @@
 #include <quokka/testing/TestSet.hpp>
-#include <quokka/assertions/Assertions.hpp>
 
 namespace qu {
 
-std::vector<std::unique_ptr<ITest>> TestSet::getTests() {
-    return std::vector<std::unique_ptr<ITest>>{};
-}
+	void TestSet::beforeEach() const {
+	}
 
-void TestSet::addTest(std::string name, std::function<void()> callback) {}
+	void TestSet::afterEach() const {
+	}
 
-void TestSet::debugTest(std::string name, std::function<void()> callback) {}
+	std::vector<std::shared_ptr<Test>> TestSet::getTests() const {
+		if (!debugTests.empty())
+			return debugTests;
+		return tests;
+	}
+
+	void TestSet::addTest(std::string name, std::function<void()> testCallback) {
+		tests.push_back(std::make_shared<Test>(name, testCallback));
+	}
+
+	void TestSet::debugTest(std::string name, std::function<void()> testCallback) {
+		debugTests.push_back(std::make_shared<Test>(name, testCallback));
+	}
 
 };

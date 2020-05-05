@@ -1,17 +1,21 @@
 #pragma once
+#include <quokka/testing/AssertionException.hpp>
+#include <quokka/testing/TestResult.hpp>
 
-#include <quokka/interface/ITest.hpp>
-
-#include <string>
 #include <functional>
-
+#include <memory>
+#include <string>
 namespace qu {
 
-class Test : public ITest {
-public:
-    Test(std::string name, std::function<void()> callback);
+	class Test {
+	public:
+		Test(std::string name, std::function<void()> testCallback);
 
-    std::unique_ptr<ITestResult> run() override;
-};
+		std::shared_ptr<TestResult> run() const;
+
+	private:
+		std::string name;
+		std::function<void()> testCallback;
+	};
 
 }
