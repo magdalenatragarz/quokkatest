@@ -1,14 +1,17 @@
 #pragma once
-#include <string>
+
 #include <quokka/testing/AssertionException.hpp>
+#include <string>
 
-class BoolAssertion {
-private:
-	bool value;
-	std::string boolToString(bool value) const;
+namespace qu {
+	class BoolAssertion {
+	public:
+		explicit BoolAssertion(bool value);
+		void toBeTrue() const;
+		void toBeFalse() const;
 
-public:
-	BoolAssertion(bool value) : value(value) {};
-	void toBeTrue() const;
-	void toBeFalse() const;
-};
+	private:
+		bool value;
+		std::string boolToString(bool value) const;
+	};
+}

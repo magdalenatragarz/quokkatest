@@ -1,31 +1,28 @@
 #include <quokka/assertions/Assertions.hpp>
 
-FloatAssertion Assertions::assert(float arg)
-{
-	return FloatAssertion(arg);
-}
+namespace qu {
 
-DoubleAssertion Assertions::assert(double arg)
-{
-	return DoubleAssertion(arg);
-}
+	FloatAssertion Assertions::assert(float arg) {
+		return FloatAssertion(arg);
+	}
 
-IntAssertion Assertions::assert(int arg)
-{
-	return IntAssertion(arg);
-}
+	DoubleAssertion Assertions::assert(double arg) {
+		return DoubleAssertion(arg);
+	}
 
-StringAssertion Assertions::assert(std::string arg)
-{
-	return StringAssertion(arg);
-}
+	IntAssertion Assertions::assert(int arg) {
+		return IntAssertion(arg);
+	}
 
-BoolAssertion Assertions::assert(bool arg)
-{
-	return BoolAssertion(arg);
-}
+	StringAssertion Assertions::assert(std::string arg) {
+		return StringAssertion(arg);
+	}
 
-FunctionAssertion Assertions::assert(std::function<void()> arg)
-{
-	return FunctionAssertion(arg);
+	BoolAssertion Assertions::assert(bool arg) {
+		return BoolAssertion(arg);
+	}
+
+	FunctionAssertion Assertions::assert(std::function<void()> arg) {
+		return FunctionAssertion(arg);
+	}
 }

@@ -1,20 +1,22 @@
 #include <quokka/assertions/function/NotFunctionAssertion.hpp>
 
-void NotFunctionAssertion::toThrow() const
-{
-	try { foo(); }
-	catch (...) {
-		throw AssertionException("Expected function to not throw");
-	}
-}
+namespace qu {
 
-void NotFunctionAssertion::toFinishIn(std::chrono::nanoseconds duration) const
-{
-	std::chrono::high_resolution_clock clk;
-	auto start = clk.now();
-	foo();
-	auto end = clk.now();
-	auto actualDuration = end - start;
-	if (actualDuration <= duration)
-		throw AssertionException("Expected not to finish in " + durationToString(duration) + ", but finished in " + durationToString(actualDuration));
+	NotFunctionAssertion::NotFunctionAssertion(std::function<void()> foo) : foo(foo) {
+	}
+
+	void NotFunctionAssertion::toThrow() const {
+		try {
+			foo();
+		} catch (...) {
+			throw AssertionException("Expected function to not throw");
+		}
+	}
+
+	void NotFunctionAssertion::toFinishIn(std::chrono::nanoseconds duration) const {
+		auto executionTime = getExecutionTimeOf(foo);
+		if (executionTime <= duration)
+			throw AssertionException("Expected not to finish in " + durationToString(duration) +
+									 ", but finished in " + durationToString(executionTime));
+	}
 }
