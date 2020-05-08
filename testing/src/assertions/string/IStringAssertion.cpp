@@ -14,6 +14,6 @@ namespace qu {
 	}
 
 	bool IStringAssertion::contains(std::string fullString, std::string substring) {
-		return strstr(fullString.c_str(), substring.c_str()) != nullptr;
+		return fullString.find(substring) != std::string::npos;
 	}
 }
