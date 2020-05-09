@@ -21,15 +21,15 @@ namespace qu {
 
 	void TestingPrinter::printFailure(std::shared_ptr<ITestResult> testResult) const {
 		std::cout << " > " << testResult->getTestName() << ", result: FAILURE" << std::endl;
-		std::cout << "   >> Description: " << testResult->getDescription() << std::endl;
+		std::cout << "   >> Description: " << testResult->getFailureDescription() << std::endl;
 	}
 
 	void TestingPrinter::printTestSetSummary(std::shared_ptr<TestsSummary> testSummary) const {
 		std::cout << "=========== SUMMARY ===========" << std::endl;
 
-		std::cout << " > Failed: " << testSummary->getFailedCount() << "/"
+		std::cout << " > Failed: " << testSummary->getFailedTestsCount() << "/"
 				  << testSummary->getTestsCount() << std::endl;
-		std::cout << " > Succeded: " << testSummary->getSucceededCount() << "/"
+		std::cout << " > Succeded: " << testSummary->getSucceededTestsCount() << "/"
 				  << testSummary->getTestsCount() << std::endl;
 		std::cout << " > Duration: " << testSummary->getDuration().count() << "ns" << std::endl;
 	}

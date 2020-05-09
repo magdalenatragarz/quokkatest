@@ -8,12 +8,11 @@ namespace qu {
 	}
 
 	void TestRunner::runTests() {
-		summary->addBeginTime(std::chrono::system_clock::now());
-		for (auto& testSet : testSets) {
+		summary->setBeginTime(std::chrono::system_clock::now());
+		for (auto& testSet : testSets)
 			runTestSet(testSet);
-		}
-		summary->addEndTime(std::chrono::system_clock::now());
 
+		summary->setEndTime(std::chrono::system_clock::now());
 		printer->printTestSetSummary(summary);
 	}
 
@@ -32,13 +31,16 @@ namespace qu {
 		printer->printTestSetHeader(testSet);
 
 		testSet->init();
+		for (auto& test : testSet->getTests())
+            runTestWithSetUpAndTeadDown(test, testSet);
 
-		for (auto& test : testSet->getTests()) {
-			testSet->beforeEach();
-			runTest(test);
-			testSet->afterEach();
-		}
 		printer->printNewLine();
+	}
+
+    void TestRunner::runTestWithSetUpAndTeadDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet) {
+        testSet->beforeEach();
+        runTest(test);
+        testSet->afterEach();
 	}
 
 }

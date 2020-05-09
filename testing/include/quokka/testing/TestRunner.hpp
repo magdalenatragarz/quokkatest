@@ -8,7 +8,6 @@
 #include <chrono>
 
 namespace qu {
-
 	class TestRunner {
 	public:
 		TestRunner();
@@ -23,6 +22,6 @@ namespace qu {
 
 		void runTest(std::shared_ptr<Test> test);
 		void runTestSet(std::shared_ptr<TestSet> testSet);
+		void runTestWithSetUpAndTeadDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet);
 	};
-
 }

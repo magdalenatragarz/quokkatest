@@ -8,7 +8,6 @@
 #include <string>
 
 namespace qu {
-
 	class TestSet : public Assertions {
 	public:
 		virtual void init() = 0;
@@ -27,5 +26,4 @@ namespace qu {
 		std::vector<std::shared_ptr<Test>> tests{};
 		std::vector<std::shared_ptr<Test>> debugTests{};
 	};
-
 }

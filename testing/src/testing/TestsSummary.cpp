@@ -6,30 +6,29 @@ namespace qu {
 		results.push_back(result);
 	}
 
-	void TestsSummary::addBeginTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
+	void TestsSummary::setBeginTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
 		begin = timestamp;
 	}
 
-	void TestsSummary::addEndTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
+	void TestsSummary::setEndTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
 		end = timestamp;
 	}
 
-	int TestsSummary::getFailedCount() {
+	int TestsSummary::getFailedTestsCount() const {
 		auto predicate = [](std::shared_ptr<ITestResult> result) { return result->hasFailed(); };
 		return std::count_if(results.begin(), results.end(), predicate);
 	}
 
-	int TestsSummary::getSucceededCount() {
+	int TestsSummary::getSucceededTestsCount() const {
 		auto predicate = [](std::shared_ptr<ITestResult> result) { return !result->hasFailed(); };
-
 		return std::count_if(results.begin(), results.end(), predicate);
 	}
 
-	int TestsSummary::getTestsCount() {
+	int TestsSummary::getTestsCount() const {
 		return results.size();
 	}
 
-	std::chrono::nanoseconds TestsSummary::getDuration() {
+	std::chrono::nanoseconds TestsSummary::getDuration() const {
 		return (end - begin);
 	}
 
