@@ -11,9 +11,9 @@ namespace qu {
 
 		try {
 			testCallback();
-			return std::make_unique<TestResult>(!hasFailed, name);
+			return std::make_shared<TestResult>(!hasFailed, name);
 		} catch (AssertionException& e) {
-			return std::make_unique<TestResult>(hasFailed, name, e.what());
+			return std::make_shared<TestResult>(hasFailed, name, e.what());
 		}
 	}
 

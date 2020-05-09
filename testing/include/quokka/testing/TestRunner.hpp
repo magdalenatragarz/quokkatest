@@ -20,8 +20,8 @@ namespace qu {
 		std::shared_ptr<TestsSummary> summary;
 		std::vector<std::shared_ptr<TestSet>> testSets{};
 
-		void runTest(std::shared_ptr<Test> test) const;
-		void runTestSet(std::shared_ptr<TestSet> testSet) const;
-		void runTestWithSetUpAndTearDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet) const;
+		void runTest(const Test& test) const;
+		void runTestSet(const TestSet& testSet) const;
+		void runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const;
 	};
 }

@@ -7,9 +7,9 @@
 namespace qu {
 	class ITestingPrinter {
 	public:
-		virtual void printTestSetHeader(std::shared_ptr<TestSet> testSet) const = 0;
-		virtual void printTestResult(std::shared_ptr<ITestResult> testResult) const = 0;
-		virtual void printTestSetSummary(std::shared_ptr<TestsSummary> testSummary) const = 0;
+		virtual void printTestSetHeader(const TestSet& testSet) const = 0;
+		virtual void printTestResult(const ITestResult& testResult) const = 0;
+		virtual void printTestSetSummary(const TestsSummary& testSummary) const = 0;
 		virtual void printNewLine() const = 0;
 	};
 }

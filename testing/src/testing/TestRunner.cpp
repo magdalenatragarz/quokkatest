@@ -10,37 +10,37 @@ namespace qu {
 	void TestRunner::runTests() const {
 		summary->setBeginTime(std::chrono::system_clock::now());
 		for (auto& testSet : testSets)
-			runTestSet(testSet);
+			runTestSet(*testSet);
 
 		summary->setEndTime(std::chrono::system_clock::now());
-		printer->printTestSetSummary(summary);
+		printer->printTestSetSummary(*summary);
 	}
 
 	void TestRunner::registerTestSet(std::shared_ptr<TestSet> testSet) {
 		testSets.push_back(testSet);
+        testSet->init();
 	}
 
-	void TestRunner::runTest(std::shared_ptr<Test> test) const {
-		auto result = test->run();
+	void TestRunner::runTest(const Test& test) const {
+		auto result = test.run();
 
-		printer->printTestResult(result);
+		printer->printTestResult(*result);
 		summary->addResult(result);
 	}
 
-	void TestRunner::runTestSet(std::shared_ptr<TestSet> testSet) const {
+	void TestRunner::runTestSet(const TestSet& testSet) const {
 		printer->printTestSetHeader(testSet);
 
-		testSet->init();
-		for (auto& test : testSet->getTests())
-            runTestWithSetUpAndTearDown(test, testSet);
+		for (auto& test : testSet.getTests())
+            runTestWithSetUpAndTearDown(*test, testSet);
 
 		printer->printNewLine();
 	}
 
-    void TestRunner::runTestWithSetUpAndTearDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet) const {
-        testSet->beforeEach();
+    void TestRunner::runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const {
+        testSet.beforeEach();
         runTest(test);
-        testSet->afterEach();
+        testSet.afterEach();
 	}
 
 }
