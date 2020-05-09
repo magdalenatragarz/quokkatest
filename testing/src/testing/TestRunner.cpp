@@ -7,7 +7,7 @@ namespace qu {
 		summary = std::make_shared<TestsSummary>();
 	}
 
-	void TestRunner::runTests() {
+	void TestRunner::runTests() const {
 		summary->setBeginTime(std::chrono::system_clock::now());
 		for (auto& testSet : testSets)
 			runTestSet(testSet);
@@ -20,24 +20,24 @@ namespace qu {
 		testSets.push_back(testSet);
 	}
 
-	void TestRunner::runTest(std::shared_ptr<Test> test) {
+	void TestRunner::runTest(std::shared_ptr<Test> test) const {
 		auto result = test->run();
 
 		printer->printTestResult(result);
 		summary->addResult(result);
 	}
 
-	void TestRunner::runTestSet(std::shared_ptr<TestSet> testSet) {
+	void TestRunner::runTestSet(std::shared_ptr<TestSet> testSet) const {
 		printer->printTestSetHeader(testSet);
 
 		testSet->init();
 		for (auto& test : testSet->getTests())
-            runTestWithSetUpAndTeadDown(test, testSet);
+            runTestWithSetUpAndTearDown(test, testSet);
 
 		printer->printNewLine();
 	}
 
-    void TestRunner::runTestWithSetUpAndTeadDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet) {
+    void TestRunner::runTestWithSetUpAndTearDown(std::shared_ptr<Test> test, std::shared_ptr<TestSet> testSet) const {
         testSet->beforeEach();
         runTest(test);
         testSet->afterEach();
