@@ -6,8 +6,8 @@ namespace qu {
 	}
 
 	void FloatAssertion::toBeAlmostEqualTo(float other) const {
-		bool isAlmostEqual = other < other * 1.00000001 && other > other * 0.99999999;
-		if (isAlmostEqual) {
+		bool isAlmostEqual = (other < other * 1.00000001) && (other > other * 0.99999999);
+		if (!isAlmostEqual) {
 			std::string message = "Expected " + std::to_string(value) + " to be almost equal to " +
 								  std::to_string(other);
 			throw AssertionException(message);
