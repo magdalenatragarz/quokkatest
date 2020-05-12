@@ -2,8 +2,9 @@
 
 namespace qu {
 
-	void TestsSummary::addResult(std::shared_ptr<ITestResult> result) {
-		results.push_back(result);
+	void TestsSummary::addResults(std::vector<std::shared_ptr<ITestResult>> results) {
+		for (auto& result : results)
+		    addResult(result);
 	}
 
 	void TestsSummary::setBeginTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
@@ -15,21 +16,25 @@ namespace qu {
 	}
 
 	int TestsSummary::getFailedTestsCount() const {
-		auto predicate = [](std::shared_ptr<ITestResult> result) { return result->hasFailed(); };
-		return std::count_if(results.begin(), results.end(), predicate);
+        return failedTests;
 	}
 
 	int TestsSummary::getSucceededTestsCount() const {
-		auto predicate = [](std::shared_ptr<ITestResult> result) { return !result->hasFailed(); };
-		return std::count_if(results.begin(), results.end(), predicate);
+		return succeededTests;
 	}
 
 	int TestsSummary::getTestsCount() const {
-		return results.size();
+		return failedTests + succeededTests;
 	}
 
 	std::chrono::nanoseconds TestsSummary::getDuration() const {
 		return (end - begin);
 	}
+
+    void TestsSummary::addResult(std::shared_ptr<ITestResult> result) {
+	    if (result->hasFailed())
+	        failedTests += 1;
+	    succeededTests += 1;
+    }
 
 }

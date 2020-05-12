@@ -13,15 +13,21 @@ namespace qu {
 		TestRunner();
 
 		void runTests() const;
-		void registerTestSet(std::shared_ptr<TestSet> testSet);
+
+		template <typename T>
+		void registerTestSet()
+        {
+		    auto set = std::make_shared<T>();
+            testSets.push_back(set);
+            set->init();
+        }
 
 	private:
 		std::unique_ptr<ITestingPrinter> printer;
-		std::shared_ptr<TestsSummary> summary;
-		std::vector<std::shared_ptr<TestSet>> testSets{};
+		std::vector<std::shared_ptr<TestSet>> testSets;
 
-		void runTest(const Test& test) const;
-		void runTestSet(const TestSet& testSet) const;
-		void runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const;
+        std::vector<std::shared_ptr<ITestResult>> runTestSet(const TestSet& testSet) const;
+        std::shared_ptr<ITestResult> runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const;
+        std::shared_ptr<ITestResult> runTest(const Test& test) const;
 	};
 }

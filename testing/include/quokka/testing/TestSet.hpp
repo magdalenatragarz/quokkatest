@@ -23,7 +23,7 @@ namespace qu {
 		void debugTest(std::string name, std::function<void()> callback);
 
 	private:
-		std::vector<std::shared_ptr<Test>> tests{};
-		std::vector<std::shared_ptr<Test>> debugTests{};
+		std::vector<std::shared_ptr<Test>> tests;
+		std::vector<std::shared_ptr<Test>> debugTests;
 	};
 }

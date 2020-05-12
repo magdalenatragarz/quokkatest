@@ -10,7 +10,7 @@
 namespace qu {
 	class TestsSummary {
 	public:
-		void addResult(std::shared_ptr<ITestResult> result);
+		void addResults(std::vector<std::shared_ptr<ITestResult>> results);
 		void setBeginTime(std::chrono::time_point<std::chrono::system_clock> timestamp);
 		void setEndTime(std::chrono::time_point<std::chrono::system_clock> timestamp);
 
@@ -22,6 +22,9 @@ namespace qu {
 	private:
 		std::chrono::time_point<std::chrono::system_clock> begin;
 		std::chrono::time_point<std::chrono::system_clock> end;
-		std::vector<std::shared_ptr<ITestResult>> results;
+		int failedTests{0};
+		int succeededTests{0};
+
+        void addResult(std::shared_ptr<ITestResult> results);
 	};
 }

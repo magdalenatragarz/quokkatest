@@ -4,43 +4,45 @@ namespace qu {
 
 	TestRunner::TestRunner() {
 		printer = std::make_unique<TestingPrinter>();
-		summary = std::make_shared<TestsSummary>();
 	}
 
 	void TestRunner::runTests() const {
-		summary->setBeginTime(std::chrono::system_clock::now());
+	    TestsSummary summary;
+
+		summary.setBeginTime(std::chrono::system_clock::now());
 		for (auto& testSet : testSets)
-			runTestSet(*testSet);
+			summary.addResults(runTestSet(*testSet));
 
-		summary->setEndTime(std::chrono::system_clock::now());
-		printer->printTestSetSummary(*summary);
+		summary.setEndTime(std::chrono::system_clock::now());
+		printer->printTestSetSummary(summary);
 	}
 
-	void TestRunner::registerTestSet(std::shared_ptr<TestSet> testSet) {
-		testSets.push_back(testSet);
-        testSet->init();
-	}
+    std::vector<std::shared_ptr<ITestResult>> TestRunner::runTestSet(const TestSet& testSet) const {
+        std::vector<std::shared_ptr<ITestResult>> results;
 
-	void TestRunner::runTest(const Test& test) const {
-		auto result = test.run();
+	    printer->printTestSetHeader(testSet);
+        for (auto& test : testSet.getTests())
+            results.push_back(runTestWithSetUpAndTearDown(*test, testSet));
+        printer->printNewLine();
 
-		printer->printTestResult(*result);
-		summary->addResult(result);
-	}
+        return results;
+    }
 
-	void TestRunner::runTestSet(const TestSet& testSet) const {
-		printer->printTestSetHeader(testSet);
-
-		for (auto& test : testSet.getTests())
-            runTestWithSetUpAndTearDown(*test, testSet);
-
-		printer->printNewLine();
-	}
-
-    void TestRunner::runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const {
+    std::shared_ptr<ITestResult> TestRunner::runTestWithSetUpAndTearDown(const Test& test, const TestSet& testSet) const {
         testSet.beforeEach();
-        runTest(test);
+        auto result = runTest(test);
         testSet.afterEach();
+
+        return result;
+    }
+
+	std::shared_ptr<ITestResult> TestRunner::runTest(const Test& test) const {
+	    auto result = test.run();
+		printer->printTestResult(*result);
+
+		return result;
 	}
+
+
 
 }
