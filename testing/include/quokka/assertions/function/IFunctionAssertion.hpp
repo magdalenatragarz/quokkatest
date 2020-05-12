@@ -1,5 +1,6 @@
 #pragma once
 
+#include <quokka/utils/Utils.hpp>
 #include <chrono>
 #include <functional>
 #include <iomanip>
@@ -12,7 +13,6 @@ namespace qu {
 		virtual void toFinishIn(std::chrono::nanoseconds duration) const = 0;
 
 	protected:
-		static std::string durationToString(std::chrono::nanoseconds duration);
 		static std::chrono::nanoseconds getExecutionTimeOf(std::function<void()> foo);
 	};
 }

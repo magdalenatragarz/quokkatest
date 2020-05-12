@@ -16,7 +16,7 @@ namespace qu {
 	void NotFunctionAssertion::toFinishIn(std::chrono::nanoseconds duration) const {
 		auto executionTime = getExecutionTimeOf(foo);
 		if (executionTime <= duration)
-			throw AssertionException("Expected not to finish in " + durationToString(duration) +
-									 ", but finished in " + durationToString(executionTime));
+			throw AssertionException("Expected not to finish in " + Utils::durationToString(duration) + ", but finished in " +
+									 Utils::durationToString(executionTime));
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <quokka/testing/AssertionException.hpp>
+#include <quokka/utils/Utils.hpp>
 #include <string>
 
 namespace qu {
@@ -12,6 +13,5 @@ namespace qu {
 
 	private:
 		bool value;
-		std::string boolToString(bool value) const;
 	};
 }

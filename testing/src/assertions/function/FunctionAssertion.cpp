@@ -34,7 +34,7 @@ namespace qu {
 	void FunctionAssertion::toFinishIn(std::chrono::nanoseconds duration) const {
 		auto executionTime = getExecutionTimeOf(foo);
 		if (executionTime > duration)
-			throw AssertionException("Expected to finish in " + durationToString(duration) +
-									 ", but finished in " + durationToString(executionTime));
+			throw AssertionException("Expected to finish in " + Utils::durationToString(duration) +
+									 ", but finished in " + Utils::durationToString(executionTime));
 	}
 }
