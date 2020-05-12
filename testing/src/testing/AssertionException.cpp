@@ -2,8 +2,8 @@
 
 namespace qu {
 
-	AssertionException::AssertionException(const char *message) {
-		this->message = std::string(message);
+	AssertionException::AssertionException(std::string message) {
+		this->message = message;
 	}
 
 	const char *AssertionException::what() const noexcept {

@@ -10,7 +10,7 @@ namespace qu {
 		std::string message;
 
 	public:
-		AssertionException(const char *message);
+		AssertionException(std::string message);
 
 		virtual const char *what() const noexcept override;
 	};

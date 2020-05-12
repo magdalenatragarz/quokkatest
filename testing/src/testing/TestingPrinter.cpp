@@ -31,7 +31,7 @@ namespace qu {
 				  << testSummary.getTestsCount() << std::endl;
 		std::cout << " > Succeded: " << testSummary.getSucceededTestsCount() << "/"
 				  << testSummary.getTestsCount() << std::endl;
-		std::cout << " > Duration: " << testSummary.getDuration().count() << "ns" << std::endl;
+		std::cout << " > Duration: " << Utils::durationToString(testSummary.getDuration()) << std::endl;
 	}
 
 	void TestingPrinter::printNewLine() const {
