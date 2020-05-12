@@ -25,4 +25,24 @@ namespace qu {
 	FunctionAssertion Assertions::assert(std::function<void()> arg) {
 		return FunctionAssertion(arg);
 	}
+
+	NotFloatAssertion Assertions::assertNot(float arg) {
+		return NotFloatAssertion(arg);
+	}
+
+	NotDoubleAssertion Assertions::assertNot(double arg) {
+		return NotDoubleAssertion(arg);
+	}
+
+	NotIntAssertion Assertions::assertNot(int arg) {
+		return NotIntAssertion(arg);
+	}
+
+	NotStringAssertion Assertions::assertNot(std::string arg) {
+		return NotStringAssertion(arg);
+	}
+
+	NotFunctionAssertion Assertions::assertNot(std::function<void()> arg) {
+		return NotFunctionAssertion(arg);
+	}
 }

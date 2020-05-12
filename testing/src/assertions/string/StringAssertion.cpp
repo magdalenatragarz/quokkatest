@@ -5,10 +5,6 @@ namespace qu {
 	StringAssertion::StringAssertion(std::string value) : value(value) {
 	}
 
-	NotStringAssertion StringAssertion::not() const {
-		return NotStringAssertion(value);
-	}
-
 	void StringAssertion::toBeEqualTo(std::string other) const {
 		if (value != other)
 			throw AssertionException("Expected \"" + value + "\" to be equal to \"" + other + "\"");

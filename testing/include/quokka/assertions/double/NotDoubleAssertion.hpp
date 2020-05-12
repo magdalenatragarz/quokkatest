@@ -2,6 +2,7 @@
 
 #include <quokka/assertions/double/IDoubleAssetrion.hpp>
 #include <quokka/testing/AssertionException.hpp>
+#include <cmath>
 
 namespace qu {
 	class NotDoubleAssertion : public IDoubleAssertion {

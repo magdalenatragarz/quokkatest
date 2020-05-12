@@ -7,11 +7,11 @@ namespace qu {
 		    addResult(result);
 	}
 
-	void TestsSummary::setBeginTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
+	void TestsSummary::setBeginTime(std::chrono::time_point<std::chrono::steady_clock> timestamp) {
 		begin = timestamp;
 	}
 
-	void TestsSummary::setEndTime(std::chrono::time_point<std::chrono::system_clock> timestamp) {
+	void TestsSummary::setEndTime(std::chrono::time_point<std::chrono::steady_clock> timestamp) {
 		end = timestamp;
 	}
 

@@ -5,10 +5,6 @@ namespace qu {
 	FunctionAssertion::FunctionAssertion(std::function<void()> foo) : foo(foo) {
 	}
 
-	NotFunctionAssertion FunctionAssertion::not() const {
-		return NotFunctionAssertion(foo);
-	}
-
 	void FunctionAssertion::toThrow() const {
 		try {
 			foo();

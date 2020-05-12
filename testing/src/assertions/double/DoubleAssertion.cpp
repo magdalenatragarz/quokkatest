@@ -5,10 +5,6 @@ namespace qu {
 	DoubleAssertion::DoubleAssertion(double value) : value(value) {
 	}
 
-	NotDoubleAssertion DoubleAssertion::not() const {
-		return NotDoubleAssertion(value);
-	}
-
 	void DoubleAssertion::toBeAlmostEqualTo(double other) const {
 		bool isAlmostEqual = other < other * 1.00000001 && other > other * 0.99999999;
 		if (isAlmostEqual) {

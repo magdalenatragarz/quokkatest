@@ -2,6 +2,7 @@
 
 #include <quokka/assertions/float/IFloatAssertion.hpp>
 #include <quokka/testing/AssertionException.hpp>
+#include <cmath>
 
 namespace qu {
 	class NotFloatAssertion : public IFloatAssertion {

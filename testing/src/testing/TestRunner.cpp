@@ -9,11 +9,11 @@ namespace qu {
 	void TestRunner::runTests() const {
 	    TestsSummary summary;
 
-		summary.setBeginTime(std::chrono::system_clock::now());
+		summary.setBeginTime(std::chrono::steady_clock::now());
 		for (auto& testSet : testSets)
 			summary.addResults(runTestSet(*testSet));
 
-		summary.setEndTime(std::chrono::system_clock::now());
+		summary.setEndTime(std::chrono::steady_clock::now());
 		printer->printTestSetSummary(summary);
 	}
 

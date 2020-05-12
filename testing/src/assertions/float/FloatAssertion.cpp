@@ -5,10 +5,6 @@ namespace qu {
 	FloatAssertion::FloatAssertion(float value) : value(value) {
 	}
 
-	NotFloatAssertion FloatAssertion::not() const {
-		return NotFloatAssertion(value);
-	}
-
 	void FloatAssertion::toBeAlmostEqualTo(float other) const {
 		bool isAlmostEqual = other < other * 1.00000001 && other > other * 0.99999999;
 		if (isAlmostEqual) {

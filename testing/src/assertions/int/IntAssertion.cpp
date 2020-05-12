@@ -5,10 +5,6 @@ namespace qu {
 	IntAssertion::IntAssertion(int value) : value(value) {
 	}
 
-	NotIntAssertion IntAssertion::not() const {
-		return NotIntAssertion(value);
-	}
-
 	void IntAssertion::toBeEqualTo(int other) const {
 		if (value != other)
 			throw AssertionException("Expected " + std::to_string(value) + " to be equal to " +
