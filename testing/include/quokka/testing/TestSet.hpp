@@ -1,29 +1,29 @@
 #pragma once
 
-#include <quokka/interface/ITest.hpp>
+#include <quokka/assertions/Assertions.hpp>
+#include <quokka/testing/Test.hpp>
 
-#include <string>
 #include <functional>
+#include <memory>
+#include <string>
 
 namespace qu {
+	class TestSet : public Assertions {
+	public:
+		virtual void init() = 0;
+		virtual std::string getName() const = 0;
 
-class TestSet {
-public:
-    virtual void beforeEach() = 0;
-    virtual void init() = 0;
-    virtual void afterEach() = 0;
-    virtual std::string getName() = 0;
+		virtual void beforeEach() const;
+		virtual void afterEach() const;
 
-    std::vector<std::unique_ptr<ITest>> getTests();
+		std::vector<std::shared_ptr<Test>> getTests() const;
 
-protected:
-    void addTest(std::string name, std::function<void()> callback);
-    void debugTest(std::string name, std::function<void()> callback);
+	protected:
+		void addTest(std::string name, std::function<void()> callback);
+		void debugTest(std::string name, std::function<void()> callback);
 
-private:
-    std::vector<std::unique_ptr<ITest>> tests;
-    std::vector<std::unique_ptr<ITest>> debugTests;
-
-};
-
+	private:
+		std::vector<std::shared_ptr<Test>> tests;
+		std::vector<std::shared_ptr<Test>> debugTests;
+	};
 }

@@ -3,11 +3,10 @@
 #include <string>
 
 namespace qu {
-
-class ITestResult {
-public:
-    virtual bool hasFailed() = 0;
-    virtual std::string getDescription() = 0;
-};
-
+	class ITestResult {
+	public:
+		virtual bool hasFailed() const = 0;
+		virtual std::string getFailureDescription() const = 0;
+		virtual std::string getTestName() const = 0;
+	};
 }

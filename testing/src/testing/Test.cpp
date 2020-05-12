@@ -1,12 +1,20 @@
 #include <quokka/testing/Test.hpp>
-#include <quokka/testing/TestResult.hpp>
 
 namespace qu {
 
-Test::Test(std::string name, std::function<void()>) {}
+	Test::Test(std::string name, std::function<void()> testCallback)
+		: name(name), testCallback(testCallback) {
+	}
 
-std::unique_ptr<ITestResult> run() {
-    return std::make_unique<TestResult>(true, "");
-}
+	std::shared_ptr<TestResult> Test::run() const {
+		auto hasFailed = true;
+
+		try {
+			testCallback();
+			return std::make_shared<TestResult>(!hasFailed, name);
+		} catch (AssertionException& e) {
+			return std::make_shared<TestResult>(hasFailed, name, e.what());
+		}
+	}
 
 }

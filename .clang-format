@@ -28,5 +28,3 @@ BraceWrapping:
   AfterStruct: false
   AfterFunction: false
   SplitEmptyFunction: false
-
-

@@ -2,16 +2,24 @@
 
 namespace qu {
 
-TestResult::TestResult(bool hasFailed, std::string description) {}
+	TestResult::TestResult(bool testFailureState, std::string name)
+		: testFailureState(testFailureState), name(name) {
+	}
 
+	TestResult::TestResult(bool testFailureState, std::string name, std::string failureDescription)
+		: testFailureState(testFailureState), name(name), failureDescription(failureDescription) {
+	}
 
-bool TestResult::hasFailed() {
-    return true;
-}
+	bool TestResult::hasFailed() const {
+		return testFailureState;
+	}
 
+	std::string TestResult::getFailureDescription() const {
+		return failureDescription;
+	}
 
-std::string TestResult::getDescription() {
-    return std::string();
-}
+	std::string TestResult::getTestName() const {
+		return name;
+	}
 
 }
