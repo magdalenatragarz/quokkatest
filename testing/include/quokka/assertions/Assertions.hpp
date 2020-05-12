@@ -9,6 +9,7 @@
 
 namespace qu {
 	class Assertions {
+	public:
 		static FloatAssertion assert(float arg);
 		static DoubleAssertion assert(double arg);
 		static IntAssertion assert(int arg);

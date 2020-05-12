@@ -12,19 +12,19 @@ namespace qu {
 	}
 
 	void NotStringAssertion::toContain(std::string substring) const {
-		if (contains(value, substring))
+		if (Utils::contains(value, substring))
 			throw AssertionException("Expected \"" + value + "\" not to contain \"" + substring +
 									 "\"");
 	}
 
 	void NotStringAssertion::toBeginWith(std::string substring) const {
-		if (startsWith(value, substring))
+		if (Utils::startsWith(value, substring))
 			throw AssertionException("Expected \"" + value + "\" not to begin with \"" + substring +
 									 "\"");
 	}
 
 	void NotStringAssertion::toEndWith(std::string substring) const {
-		if (endsWith(value, substring))
+		if (Utils::endsWith(value, substring))
 			throw AssertionException("Expected \"" + value + "\" not to end with \"" + substring +
 									 "\"");
 	}

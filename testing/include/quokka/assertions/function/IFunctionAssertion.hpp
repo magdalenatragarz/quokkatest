@@ -3,8 +3,6 @@
 #include <quokka/utils/Utils.hpp>
 #include <chrono>
 #include <functional>
-#include <iomanip>
-#include <sstream>
 
 namespace qu {
 	class IFunctionAssertion {
