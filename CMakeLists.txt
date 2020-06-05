@@ -4,6 +4,7 @@ project(quokkatest)
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(testing)
+add_subdirectory(termcolor)
 
 add_executable(quokkatest ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 

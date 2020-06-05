@@ -10,6 +10,8 @@ add_library(testing STATIC ${quokka_src} ${quokka_include})
 
 set_target_properties(testing PROPERTIES LINKER_LANGUAGE CXX)
 
+target_link_libraries(testing PUBLIC termcolor)
+
 target_include_directories(testing
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 

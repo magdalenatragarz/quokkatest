@@ -2,7 +2,7 @@
 
 #include <quokka/interface/ITestingPrinter.hpp>
 #include <quokka/testing/TestSet.hpp>
-#include <quokka/testing/TestingPrinter.hpp>
+#include <quokka/testing/ColouredTestingPrinter.hpp>
 #include <quokka/testing/TestsSummary.hpp>
 
 #include <chrono>

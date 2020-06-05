@@ -3,7 +3,7 @@
 namespace qu {
 
 	TestRunner::TestRunner() {
-		printer = std::make_unique<TestingPrinter>();
+		printer = std::make_unique<ColouredTestingPrinter>();
 	}
 
 	void TestRunner::runTests() const {
